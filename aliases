@@ -1,0 +1,40 @@
+alias docker='sudo podman'
+
+# Package manager aliases
+alias up='rpm-ostree upgrade'
+alias se='sudo podman run --rm fedora:29 dnf search'
+alias sei='sudo podman run -it --rm fedora:29 bash'
+
+alias ls='ls --group-directories-first --time-style=+"%Y-%m-%d %H:%M" --color=auto --classify'
+alias ll='ls -lh'
+alias la='ls -lah'
+alias lh=la
+
+# Git aliases - based on http://www.catonmat.net/blog/git-aliases/
+alias g=git
+alias ga='git add'
+alias gl='git log'
+alias gll='git log --decorate --pretty=oneline --abbrev-commit'
+alias gla='git log --decorate --pretty=oneline --abbrev-commit --graph --all'
+alias gfu='git fetch upstream; git checkout -B master origin/master'
+alias gs='git status'
+alias gd='git diff'
+alias gdw='git diff --color-words'
+alias gdt='git difftool'
+alias gra='git remote add'
+alias gdc='git diff --cached'
+alias gm='git commit'
+alias gb='git branch'
+alias gc='git checkout'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gcl='git clone'
+
+alias o='xdg-open' # 'open' files from the commandline
+
+alias gw='./gradlew'
+alias bumpgradle='function _bumpgradle(){./gradlew wrapper --gradle-version=$1 --distribution-type all};_bumpgradle'
+
+# From https://www.blockloop.io/mastering-bash-and-terminal
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
