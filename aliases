@@ -32,6 +32,8 @@ alias gc='git checkout'
 alias gra='git remote add'
 alias grr='git remote rm'
 alias gcl='git clone'
+alias gci='git commit'
+alias gco='git checkout'
 
 alias o='xdg-open' # 'open' files from the commandline
 
