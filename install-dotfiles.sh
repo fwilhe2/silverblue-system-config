@@ -1,7 +1,7 @@
 #!/bin/bash
 
-install bashrc ~/.bashrc
-install aliases ~/.aliases
-install gitconfig ~/.gitconfig
-install gitignore ~/.gitignore
-install vimrc ~/.vimrc
+install dotfiles/bashrc ~/.bashrc
+install dotfiles/aliases ~/.aliases
+install dotfiles/gitconfig ~/.gitconfig
+install dotfiles/gitignore ~/.gitignore
+install dotfiles/vimrc ~/.vimrc
