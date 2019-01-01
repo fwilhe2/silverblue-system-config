@@ -10,6 +10,9 @@ alias ll='ls -lh'
 alias la='ls -lah'
 alias lh=la
 
+alias code='flatpak run com.visualstudio.code'
+alias c='code .'
+
 # Git aliases - based on http://www.catonmat.net/blog/git-aliases/
 alias g=git
 alias ga='git add'
