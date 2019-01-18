@@ -1,7 +1,7 @@
 alias docker='sudo podman'
 
 # Package manager aliases
-alias up='rpm-ostree upgrade'
+alias up='rpm-ostree upgrade; flatpak update --assumeyes'
 alias se='sudo podman run --rm fedora:29 dnf search'
 alias sei='sudo podman run -it --rm fedora:29 bash'
 
