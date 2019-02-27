@@ -43,3 +43,5 @@ alias bumpgradle='function _bumpgradle(){./gradlew wrapper --gradle-version=$1 -
 # From https://www.blockloop.io/mastering-bash-and-terminal
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+alias chrome=/opt/google/chrome/google-chrome
