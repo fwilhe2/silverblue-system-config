@@ -1,6 +1,6 @@
 [user]
     name = Florian Wilhelm
-    email = fwilhelm.wgt@gmail.com
+    email = fwilhelm.wgt+github@gmail.com
 
 [color]
     ui = auto
@@ -40,3 +40,6 @@
 
 [url "git@github.com:"]
     insteadOf = gh:
+
+[init]
+    defaultBranch = main

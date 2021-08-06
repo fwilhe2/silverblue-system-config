@@ -2,15 +2,15 @@ alias docker='podman'
 
 # Package manager aliases
 alias up='rpm-ostree upgrade; flatpak update --assumeyes'
-alias se='podman run --rm fedora:29 dnf search'
-alias sei='podman run -it --rm fedora:29 bash'
+alias se='podman run --rm fedora:34 dnf search'
+alias sei='podman run -it --rm fedora:34 bash'
 
 alias ls='ls --group-directories-first --time-style=+"%Y-%m-%d %H:%M" --color=auto --classify'
 alias ll='ls -lh'
 alias la='ls -lah'
 alias lh=la
 
-alias code='flatpak run com.visualstudio.code'
+alias code='flatpak run com.visualstudio.code-oss'
 alias c='code .'
 
 # Git aliases - based on http://www.catonmat.net/blog/git-aliases/
@@ -38,7 +38,7 @@ alias gco='git checkout'
 alias o='xdg-open' # 'open' files from the commandline
 
 alias gw='./gradlew'
-alias bumpgradle='function _bumpgradle(){./gradlew wrapper --gradle-version=$1 --distribution-type all};_bumpgradle'
+alias bumpgradle='function _bumpgradle(){./gradlew wrapper --gradle-version=$1};_bumpgradle'
 
 # From https://www.blockloop.io/mastering-bash-and-terminal
 alias pbcopy='xclip -selection clipboard'
