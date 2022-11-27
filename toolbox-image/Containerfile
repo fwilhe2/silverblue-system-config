@@ -1,0 +1,31 @@
+FROM registry.fedoraproject.org/fedora:37
+
+ENV NAME=fedora-toolbox VERSION=37
+LABEL com.github.containers.toolbox="true" \
+      com.redhat.component="$NAME" \
+      name="$NAME" \
+      version="$VERSION" \
+      usage="This image is meant to be used with the toolbox command" \
+      summary="Custom image for development purposes" \
+      maintainer="Florian Wilhelm (fwilhe2)"
+
+COPY README.md /
+
+RUN sed -i '/tsflags=nodocs/d' /etc/dnf/dnf.conf
+RUN dnf -y swap coreutils-single coreutils-full
+
+COPY missing-docs /
+RUN dnf -y reinstall $(<missing-docs)
+RUN rm /missing-docs
+
+COPY extra-packages /
+RUN dnf -y install $(<extra-packages)
+RUN rm /extra-packages
+
+RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
+RUN sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+RUN dnf -y install code
+
+RUN dnf -y install java-17-openjdk java-17-openjdk-devel golang nodejs
+
+RUN dnf clean all
