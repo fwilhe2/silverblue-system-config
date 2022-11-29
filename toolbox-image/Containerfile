@@ -28,4 +28,6 @@ RUN dnf -y install code
 
 RUN dnf -y install java-17-openjdk java-17-openjdk-devel golang nodejs
 
+RUN dnf -y install postgresql-server postgresql-contrib
+
 RUN dnf clean all
