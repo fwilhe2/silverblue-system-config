@@ -22,12 +22,23 @@ COPY extra-packages /
 RUN dnf -y install $(<extra-packages)
 RUN rm /extra-packages
 
+# Install VS Code
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
 RUN sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 RUN dnf -y install code
 
+# Install languages/compiler/runtimes
 RUN dnf -y install java-17-openjdk java-17-openjdk-devel golang nodejs
 
+# Install postgres (todo: make configurable?)
 RUN dnf -y install postgresql-server postgresql-contrib
 
 RUN dnf clean all
+
+# Configure more comfortable shell environment
+ADD https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh /etc/git-prompt.sh
+COPY dotfiles/bashrc /etc/bashrc
+COPY dotfiles/aliases /etc/aliases
+COPY dotfiles/gitconfig /etc/gitconfig
+COPY dotfiles/gitignore /etc/gitignore
+COPY dotfiles/vimrc /etc/vimrc

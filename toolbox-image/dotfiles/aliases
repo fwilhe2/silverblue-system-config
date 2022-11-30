@@ -1,16 +1,17 @@
-alias docker='podman'
-
 # Package manager aliases
-alias up='rpm-ostree upgrade; flatpak update --assumeyes'
-alias se='podman run --rm fedora:34 dnf search'
-alias sei='podman run -it --rm fedora:34 bash'
+alias i='sudo dnf install'
+alias I='sudo dnf --assumeyes install'
+alias up='sudo dnf update'
+alias se='dnf search'
+alias sho='dnf info'
+alias re='sudo dnf remove'
+alias cl='sudo dnf clean all && sudo dnf autoremove'
 
 alias ls='ls --group-directories-first --time-style=+"%Y-%m-%d %H:%M" --color=auto --classify'
 alias ll='ls -lh'
 alias la='ls -lah'
 alias lh=la
 
-alias code='flatpak run com.visualstudio.code-oss'
 alias c='code .'
 
 # Git aliases - based on http://www.catonmat.net/blog/git-aliases/

@@ -38,12 +38,14 @@ traceroute
 tree
 unzip
 util-linux
+vim
 vte-profile
 vulkan-loader
-vim
 wget
 which
 words
+xclip
 xorg-x11-xauth
 xz
 zip
+zsh

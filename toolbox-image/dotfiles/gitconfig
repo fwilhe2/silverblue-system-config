@@ -1,0 +1,45 @@
+[user]
+    name = Florian Wilhelm
+    email = fwilhelm.wgt+github@gmail.com
+
+[color]
+    ui = auto
+
+[credential]
+    helper = cache --timeout=3600
+
+[push]
+    default = simple
+
+[alias]
+    lg = log --graph --decorate --pretty=oneline --abbrev-commit
+    ls = log --decorate --pretty=oneline --abbrev-commit
+    lss = log -3
+    br = branch
+    ci = commit
+    co = checkout
+    coum = checkout -B master upstream/master
+    fcuml = "!git fetch upstream; git coum; git log"
+    st = status -s
+    fa = fetch --all
+    cp = cherry-pick
+    rb = rebase
+    uncommit = reset --soft HEAD^
+    unstage = reset HEAD
+    prune-all-remotes = !git remote | xargs git remote prune
+
+[branch]
+    autosetuprebase = always
+
+[push]
+    default = current
+
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+
+[url "git@github.com:"]
+    insteadOf = gh:
+
+[init]
+    defaultBranch = main
