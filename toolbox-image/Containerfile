@@ -31,8 +31,10 @@ RUN dnf -y install code
 # Install languages/compiler/runtimes
 RUN dnf -y install java-17-openjdk java-17-openjdk-devel golang nodejs
 
-# Install postgres (todo: make configurable?)
-RUN dnf -y install postgresql-server postgresql-contrib
+# Install to allow run-time customization of the image
+RUN dnf -y install ansible
+RUN mkdir -p /etc/ansible
+RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 
 RUN dnf clean all
 
