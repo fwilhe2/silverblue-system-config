@@ -35,6 +35,7 @@ RUN dnf -y install java-17-openjdk java-17-openjdk-devel golang nodejs
 RUN dnf -y install ansible
 RUN mkdir -p /etc/ansible
 RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
+COPY playbooks /playbooks
 
 RUN dnf clean all
 
