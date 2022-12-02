@@ -40,7 +40,6 @@ COPY playbooks /playbooks
 RUN dnf clean all
 
 # Configure more comfortable shell environment
-ADD https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh /etc/git-prompt.sh
 COPY dotfiles/bashrc /etc/bashrc
 COPY dotfiles/aliases /etc/aliases
 COPY dotfiles/gitconfig /etc/gitconfig
