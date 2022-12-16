@@ -29,7 +29,7 @@ RUN dnf -y install code
 # todo: install vscode extensions (not as root)
 
 # Install languages/compiler/runtimes
-RUN dnf -y install java-17-openjdk java-17-openjdk-devel golang nodejs
+RUN dnf -y install java-17-openjdk java-17-openjdk-devel golang nodejs yarnpkg
 
 # Install postgres (todo: make configurable?)
 RUN dnf -y install postgresql-server postgresql-contrib
