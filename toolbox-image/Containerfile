@@ -34,7 +34,7 @@ RUN sh -c 'echo -e "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodi
 RUN dnf -y install codium
 
 # Install languages/compiler/runtimes
-RUN dnf -y install java-17-openjdk java-17-openjdk-devel golang nodejs yarnpkg rust cargo
+RUN dnf -y install java-17-openjdk java-17-openjdk-devel golang nodejs yarnpkg rust cargo openssl-devel
 
 # Install postgres (todo: make configurable?)
 # RUN dnf -y install postgresql-server postgresql-contrib
