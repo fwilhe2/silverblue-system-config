@@ -12,6 +12,6 @@ jobs:
       uses: ludeeus/action-shellcheck@master
     - run: buildah build --tag=docker.io/fwilhe2/dev toolbox-image
     - name: Log into DockerHub
-      run: echo "${{ secrets.DH_PAT }}" | buildah docker.io login -u fwilhe2 --password-stdin
+      run: echo "${{ secrets.DH_PAT }}" | buildah login docker.io -u fwilhe2 --password-stdin
     - name: Push image
       run: buildah push docker.io/fwilhe2/dev
