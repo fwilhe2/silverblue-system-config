@@ -1,0 +1,56 @@
+---
+# This playbook is experimental and based on those repos https://github.com/j1mc/ansible-silverblue, https://github.com/whiletruedoio/whiletruedoio.desktop
+# It does not follow best practices to make the setup for trying things out more simple, might use proper roles at a later point in time
+- name: Fedora Silverblue Desktop Playbook
+  hosts: localhost
+  tasks:
+    - name: Display all variables/facts known for a host
+      ansible.builtin.debug:
+        var: hostvars[inventory_hostname]
+        verbosity: 4
+    - name: Install desired applications as layered packages
+      community.general.rpm_ostree_pkg:
+        name: "{{ item }}"
+        state: present
+        # apply_live: true  # This feature is not yet available
+      loop:
+        - git
+        - htop
+        - httpie
+        - jq
+        - keepassxc
+        - libXScrnSaver
+        - python3-psutil
+        - the_silver_searcher
+        - vim
+        - xclip
+        - zsh
+
+    - name: Add Flatpak remote for Flathub
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        method: user
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+    - name: Update metadata to show newly-available software
+      ansible.builtin.command: flatpak update --appstream
+
+    - name: Install Flatpak packages
+      community.general.flatpak:
+        name: "{{ item }}"
+        state: present
+        method: user
+        remote: flathub
+      loop:
+        - com.google.Chrome
+        - com.visualstudio.code-oss
+        - org.gimp.GIMP
+        - org.libreoffice.LibreOffice
+        - org.videolan.VLC
+
+    - name: "Window Buttons"
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/preferences/button-layout"
+        value: "'appmenu:minimize,maximize,close'"
+        state: "present"
