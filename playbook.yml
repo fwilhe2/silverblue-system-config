@@ -35,6 +35,7 @@
 
     - name: Update metadata to show newly-available software
       ansible.builtin.command: flatpak update --appstream
+      changed_when: false
 
     - name: Install Flatpak packages
       community.general.flatpak:
