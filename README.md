@@ -26,3 +26,8 @@ source venv/bin/activate
 python3 -m pip install ansible
 ansible-playbook playbook.yml
 ```
+
+## References
+
+- [libvirt](https://discussion.fedoraproject.org/t/playing-around-with-fedora-coreos-using-vagrant-libvirt-on-fedora-silverblue/1704)
+- [rpm fusion](https://rpmfusion.org/Howto/OSTree)
