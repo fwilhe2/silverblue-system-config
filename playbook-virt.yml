@@ -1,0 +1,33 @@
+---
+# This playbook is experimental and based on those repos https://github.com/j1mc/ansible-silverblue, https://github.com/whiletruedoio/whiletruedoio.desktop
+# It does not follow best practices to make the setup for trying things out more simple, might use proper roles at a later point in time
+- name: Fedora Silverblue Virtualization Playbook
+  hosts: localhost
+  tasks:
+    - name: Display all variables/facts known for a host
+      ansible.builtin.debug:
+        var: hostvars[inventory_hostname]
+        verbosity: 4
+
+    - name: Install desired applications as layered packages
+      community.general.rpm_ostree_pkg:
+        name: "{{ item }}"
+        state: present
+        # apply_live: true  # This feature is not yet available
+      loop:
+        - virt-install
+        - virt-manager
+        - vagrant
+        - vagrant-libvirt
+
+    - name: Add polkit rule for libvirt so it can be used without password
+      become: true
+      ansible.builtin.copy:
+        mode: '644'
+        dest: /etc/polkit-1/rules.d/80-libvirt.rules
+        content: |
+          polkit.addRule(function(action, subject) {
+            if (action.id == "org.libvirt.unix.manage" && subject.local && subject.active && subject.isInGroup("wheel")) {
+              return polkit.Result.YES;
+            }
+          });
