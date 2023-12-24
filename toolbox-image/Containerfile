@@ -41,6 +41,8 @@ RUN dnf -y install codium
 RUN dnf -y install java-17-openjdk java-17-openjdk-devel ant golang nodejs yarnpkg rust cargo python3-pip
 RUN dnf -y install make gcc gcc-c++
 
+RUN npm install -g typescript ts-node
+
 # Install postgres (todo: make configurable?)
 # RUN dnf -y install postgresql-server postgresql-contrib
 
